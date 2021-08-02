@@ -1,5 +1,5 @@
 const margin = {top: 20, right: 120, bottom: 50, left: 50},
-    svgWidth = 400,
+    svgWidth = 900,
     svgHeight = 600,
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.top - margin.bottom;
@@ -122,7 +122,7 @@ function drawChart(state, color){
         data = data.filter(function(row) {
         return row['state'] == state;
     }) 
-        
+
         xScale.domain(d3.extent(data, function(d) { return d.date; }));
         yScale.domain([0, 5000000]);
 
@@ -162,7 +162,7 @@ function drawChart(state, color){
 
         /* Initialize tooltip for datapoint */
         tip = d3.tip().attr('class', 'd3-tip').offset([-5, 5]).html(function(d) {
-            return "<strong style='color:" + color + "'>" + state + " " + floatFormatValue(d.cases)  + "</strong>";
+            return "<strong style='color:" + color + "'>" + state + " " + d.cases  + "</strong>";
         });  
 
         var path = innerChart.append("g").append("path")
