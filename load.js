@@ -100,12 +100,8 @@ function loadStates(callback){
 // get a given country's data
 // provide a callback function to execute with loaded data.
 function loadCasesByState(state, callback){
-    d3.csv("https://github.com/pipi0099/uiucdatavisualization/blob/main/covid19us.csv", function(d) {
-        d = d.filter(function(row) {
-            return row["state"] == state
-    })
+    d3.csv("https://github.com/pipi0099/uiucdatavisualization/blob/main/covid19us.csv")
         .then(callback);
-});
 }
 
 
