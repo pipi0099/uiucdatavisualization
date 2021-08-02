@@ -41,7 +41,7 @@ path {
 .ticks path {stroke:darkgray;opacity:0.3} 
 
 .content {
-    max-width: 800px;
+    max-width: 1600px;
     margin: auto;
     background-color:white;
 }

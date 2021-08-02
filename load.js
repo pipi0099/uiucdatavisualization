@@ -188,7 +188,7 @@ function drawChart(state, color){
             .attr("class", "dot") // Assign a class for styling
             .attr("cx", function(d) { return xScale(d.date) })
             .attr("cy", function(d) { return yScale(d.cases) })
-            .attr("r", 3)
+            .attr("r", 0.5)
             .call(tip)
             .on('mouseover', tip.show)
             .on('mouseout', tip.hide);
