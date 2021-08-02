@@ -93,7 +93,7 @@ function loadStates(callback){
 // get a given country's data
 // provide a callback function to execute with loaded data.
 function loadCasesByState(state, callback){
-    d3.csv("https://github.com/pipi0099/uiucdatavisualization/blob/main/covid19us.csv",   
+    d3.csv("covid19us.csv",   
         function(d){
     return { date : d3.timeParse("%Y-%m-%d")(d.date), state : d.state, cases : d.cases }
   })
