@@ -8,13 +8,6 @@ var parseTime = d3.timeParse("%Y");
 var formatValue = d3.format(",");
 var floatFormatValue = d3.format(".3n");
 
-// WDI call type
-const type = {
-    TOTAL: 0,
-    MAILE: 1,
-    FEMAILE: 2
-}
-
 const colors = ["blue","red","yellow","green","black","blue","gray", "lightgray", "orange"];
 
 const chart = d3.select('#chart')
@@ -100,7 +93,10 @@ function loadStates(callback){
 // get a given country's data
 // provide a callback function to execute with loaded data.
 function loadCasesByState(state, callback){
-    d3.csv("covid19us.csv")
+    d3.csv("https://github.com/pipi0099/uiucdatavisualization/blob/main/covid19us.csv",   
+        function(d){
+    return { date : d3.timeParse("%Y-%m-%d")(d.date), state : d.state, cases : d.cases }
+  })
         .then(callback);
 }
 
