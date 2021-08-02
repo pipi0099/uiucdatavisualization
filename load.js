@@ -1,5 +1,5 @@
 const margin = {top: 20, right: 120, bottom: 50, left: 50},
-    svgWidth = 1200,
+    svgWidth = 900,
     svgHeight = 600,
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.top - margin.bottom;
@@ -55,7 +55,7 @@ $("#to_step3").click(function() {
     //d3.selectAll("path").remove();
     innerChart.selectAll("g").remove();
     hide('#step2');
-    loadCountries(addCountriesList);
+    loadStates(StatesList);
     show('#step3');
     draw("California", "red");
     draw("Oregon", "cornflowerblue");
@@ -206,7 +206,7 @@ function drawChart(state, color){
 }
 
 // callback function
-function addCountriesList(data, i){
+function StatesList(data, i){
 
     d3.select("body")
         .select("#country_select_container")
