@@ -1,5 +1,5 @@
 const margin = {top: 20, right: 120, bottom: 50, left: 50},
-    svgWidth = 900,
+    svgWidth = 1200,
     svgHeight = 600,
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.top - margin.bottom;
@@ -47,8 +47,8 @@ $("#to_step2").click(function() {
     innerChart.selectAll("g").remove();
     hide('#step1');
     show('#step2');    
-    draw("California", "red");
-    draw("Oregon", "blue");
+    draw("Texas", "red");
+    draw("New Mexico", "cornflowerblue");
 })
 
 $("#to_step3").click(function() {
@@ -58,18 +58,18 @@ $("#to_step3").click(function() {
     loadCountries(addCountriesList);
     show('#step3');
     draw("California", "red");
-    draw("Oregon", "blue");
+    draw("Oregon", "cornflowerblue");
    
 })
 
 $("#startover").click(function() {
     innerChart.selectAll("g").remove();
-    hide("#step5");
+    hide("#step3");
     hide("#country");
     //d3.selectAll("path").remove();
     show("#step1");
     draw("California", "red");
-    draw("Oregon", "blue");
+    draw("Oregon", "cornflowerblue");
 })
 
 function load(){
@@ -162,7 +162,7 @@ function drawChart(state, color){
 
         /* Initialize tooltip for datapoint */
         tip = d3.tip().attr('class', 'd3-tip').offset([-5, 5]).html(function(d) {
-            return "<strong style='color:" + color + "'>" + state + " " + d.cases  + "</strong>";
+            return "<i style='color:" + color + "'>" + state + " " + d.date + " " + d.cases  + "</i>";
         });  
 
         var path = innerChart.append("g").append("path")
