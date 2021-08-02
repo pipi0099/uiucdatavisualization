@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <title>Narrative Visualization</title>
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <link href="d3.css" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    </head>
+<!-- load all country names and then draw World data first -->
+<body>
+    <div class="alert alert-warning">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        The data for the country you chose doesn't exist.
+    </div>
+
+    <!-- Menu section -->
+    <div id="step1" class="container-fluid" style="height:300px">
+        <div>
+            <p>
+                <h1>Cumulative Covid 19 Cases in California and Naveda</h1>
+                This chart shows the cumulative covid 19 cases in California, Oregon and Naveda over time to illustrate the comparison of number and acceleration rate of covid 19 cases in these geographically adjacent states. <br/>
+                From the visualization below, due to difference in population and state restriction measures, the number and acceleration rate of covid 19 cases in geographically adjacent states are not directly related<br/><br/>
+            </p>
+            <p><div id="to_step2"><a href="#">Another Example of States Comparison</a></div></p>
+        </div>
+    </div>
+
+    <div id="step2" class="container-fluid" style="display:none;height:300px">
+        <div>
+            <p>
+                <h1>2. United of States wage and salary employment rate</h1>
+                This scene shows the trend of average wage and salaried workers, % of total employment from 2000 to 2017 in the US.<br/>
+                You can see that the percentage of the average wage and salaried workers in the US is significantly higher than the world average.<br/><br/>
+                All the number of total, male, and female are over 90 percent.
+            </p>
+            <p><div id="to_step5"><a href="#">Customize Your States >>></a></div></p>
+        </div>
+    </div>
+
+    <div id="step5" class="container-fluid" style="display:none;height:300px">
+        <div>
+            <p>
+                <h1>5. Try yourself!</h1>
+                Now it's your turn to find out those data!! You are given two options to query the data directly to WDI dataset.
+                <li>The first one is which gender data you want to query? Male only, female only, or total.</li>
+                <li>Second one is country. You can select the name of the country you want to query in below select box.</li>
+                <br/>
+                Everytime you select a new country or gender type, new line chart will be overlapped on existing chart.
+            </p>
+            <p><div id="startover"><a href="#"> Start over </a></div></p>
+        </div>
+        <div>
+            Total <input type="radio" name="type" value="0" checked/>
+            Male <input type="radio" name="type" value="1"/>
+            Female <input type="radio"name="type" value="2"/>
+        </div>            
+        <div id="country_select_container">
+
+        </div>
+    </div>
+    
+    <div class="content">
+        <svg id="chart"></svg>
+    </div>
+    
+    <script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
+    <script src="load.js" charset="utf-8"></script>
+    <script>
+        draw("California", "red");
+        draw("Naveda", "blue");
+    </script>
+
+<div class="container-fluid" style="height:50px">
+    <strong style="color:orange">Orange</strong> line is for total average, <strong style="color:blue">blue</strong> is for male, and <strong style="color:red">red</strong> is for female. <br/>
+</div>
+
+<div class="container-fluid">
+    <h4>About the indicator in WDI:</h4>
+    <blockquote>
+            The indicator of status in employment distinguishes between two categories of the total employed. These are: (a) wage and salaried workers (also known as employees); and (b) self-employed workers. Self-employed group is broken down in the subcategories: self-employed workers with employees (employers), self-employed workers without employees (own-account workers), members of producers' cooperatives and contributing family workers (also known as unpaid family workers). Vulnerable employment refers to the sum of contributing family workers and own-account workers. The series is part of the ILO estimates and is harmonized to ensure comparability across countries and over time by accounting for differences in data source, scope of coverage, methodology, and other country-specific factors. The estimates are based mainly on nationally representative labor force surveys, with other sources (population censuses and nationally reported estimates) used only when no survey data are available.
+    </blockquote>
+</div>
+
+</body>
+<!-- any D3 or SVG related code needs to be stay below of D3 inclusion or SVG so that it exists when javascript code try to access it. -->
+
+</html>
