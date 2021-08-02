@@ -84,7 +84,7 @@ $("#startover").click(function() {
 })
 
 function load(){
-    d3.csv("./covid19us.csv").then(function(d){
+    d3.csv("https://github.com/pipi0099/uiucdatavisualization/blob/main/covid19us.csv").then(function(d){
         console.log(d);
     });
 }
@@ -94,18 +94,18 @@ function load(){
 function loadStates(callback){
     if (typeof callback !== "function") throw new Error("Wrong callback in loadStates");
 
-    d3.csv("./states.csv").then(callback);
+    d3.csv("https://github.com/pipi0099/uiucdatavisualization/blob/main/states.csv").then(callback);
 }
 
 // get a given country's data
 // provide a callback function to execute with loaded data.
 function loadCasesByState(state, callback){
-    d3.csv("./covid19us.csv", function(d) {
-        d =  d.filter(function(rows) {
-            return d["state"] == state
+    d3.csv("https://github.com/pipi0099/uiucdatavisualization/blob/main/covid19us.csv", function(d) {
+        d = d.filter(function(row) {
+            return row["state"] == state
     })
         .then(callback);
-})
+});
 }
 
 
