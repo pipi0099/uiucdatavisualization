@@ -177,7 +177,8 @@ function drawChart(state, color){
         ))
         .attr("class", "line")
         .attr("d", valueline)
-        .style("stroke", color);        
+        .attr("stroke", color)
+        .attr("stroke-width", 1.5);        
 
         // datapoint tooltip
         innerChart.append("g").selectAll(".dot")
