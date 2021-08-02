@@ -34,11 +34,6 @@ var g = innerChart
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);    
 
-$('.close').click(function() {
-    $('.alert').hide();
-})
-
-$('.alert').hide();
 
 $("#to_step2").click(function() {
     //d3.selectAll("path").remove();
@@ -134,7 +129,7 @@ function drawChart(state, color){
                 "translate(" + (width/2) + " ," +
                                 (height + margin.top + 20) + ")")
             .style("text-anchor", "middle")
-            .text("date");
+            .text("month");
 
         console.log("add y axis");
         // Add the Y Axis
@@ -157,7 +152,7 @@ function drawChart(state, color){
 
         /* Initialize tooltip for datapoint */
         tip = d3.tip().attr('class', 'd3-tip').offset([-5, 5]).html(function(d) {
-            return "<i style='color:" + color + "'>" + state + " " + d.date + " " + d.cases  + "</i>";
+            return "<i style='color:" + color + "'>" + state + " " + d3.timeFormat("%Y %B")(d.date) + " " + d.cases  + "</i>";
         });  
 
         var path = innerChart.append("g").append("path")
@@ -197,6 +192,34 @@ function drawChart(state, color){
             .style("fill", color)
             .text(state);
         }
+
+        var parseDate = function(d){ return d3.timeParse("%Y-%m-%d")(d)}
+        var maxCases = d3.max(data, function(d) { return +d.cases; })
+
+      const annotations = [
+       // first annotation
+        {
+      note: {
+        label: "Hot Zone with Outbreak in late 2020",
+        title: state,
+        wrap: 150,  // try something smaller to see text split in several lines
+        padding: 10   // More = text lower
+      
+     },
+     color: ["#cc0000"],
+     x: x(parseDate('2021-06-12')),
+     y: y(maxCases),
+     dy: 40,
+     dx: 40,
+    type: d3.annotationCalloutElbow,
+    }
+      ]
+      
+    const makeAnnotations = d3.annotation()
+        .annotations(annotations)
+     
+        innerChart.append("g")
+    .call(makeAnnotations)
     }
 }
 
