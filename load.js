@@ -1,10 +1,8 @@
-const margin = {top: 20, right: 120, bottom: 50, left: 50},
+const margin = {top: 20, right: 120, bottom: 50, left: 120},
     svgWidth = 900,
     svgHeight = 600,
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.top - margin.bottom;
-
-const colors = ["blue","red","yellow","green","black","blue","gray", "lightgray", "orange"];
 
 const chart = d3.select('#chart')
     .attr("width", svgWidth)
@@ -48,7 +46,7 @@ $("#to_step2").click(function() {
     hide('#step1');
     show('#step2');    
     draw("Texas", "red");
-    draw("New Mexico", "cornflowerblue");
+    draw("New Mexico", "steelblue");
 })
 
 $("#to_step3").click(function() {
@@ -57,9 +55,6 @@ $("#to_step3").click(function() {
     hide('#step2');
     loadStates(StatesList);
     show('#step3');
-    draw("California", "red");
-    draw("Oregon", "cornflowerblue");
-   
 })
 
 $("#startover").click(function() {
@@ -69,7 +64,7 @@ $("#startover").click(function() {
     //d3.selectAll("path").remove();
     show("#step1");
     draw("California", "red");
-    draw("Oregon", "cornflowerblue");
+    draw("Oregon", "steelblue");
 })
 
 function load(){
@@ -177,7 +172,7 @@ function drawChart(state, color){
         ))
         .attr("class", "line")
         .attr("d", valueline)
-        .attr("stroke", color)
+        .style("stroke", color)
         .attr("stroke-width", 1.5);        
 
         // datapoint tooltip
@@ -189,7 +184,7 @@ function drawChart(state, color){
             .attr("class", "dot") // Assign a class for styling
             .attr("cx", function(d) { return xScale(d.date) })
             .attr("cy", function(d) { return yScale(d.cases) })
-            .attr("r", 0.5)
+            .attr("r", 2)
             .call(tip)
             .on('mouseover', tip.show)
             .on('mouseout', tip.hide);
