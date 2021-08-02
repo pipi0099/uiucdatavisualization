@@ -1,12 +1,8 @@
 const margin = {top: 20, right: 120, bottom: 50, left: 50},
-    svgWidth = 900,
+    svgWidth = 400,
     svgHeight = 600,
     width = svgWidth - margin.left - margin.right,
     height = svgHeight - margin.top - margin.bottom;
-
-var parseTime = d3.timeParse("%Y");
-var formatValue = d3.format(",");
-var floatFormatValue = d3.format(".3n");
 
 const colors = ["blue","red","yellow","green","black","blue","gray", "lightgray", "orange"];
 
@@ -18,7 +14,7 @@ const innerChart = chart.append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // x,y values
-var xScale = d3.scaleLinear().range([0,width]);
+var xScale = d3.scaleTime().range([0,width]);
 var yScale = d3.scaleLinear().range([height, 0]);    
 
 // x,y axis
@@ -123,7 +119,10 @@ function drawChart(state, color){
 
         //  clean up everything before drawing a new chart
         // d3.select("body").selectAll("svg > *").remove();
-
+        data = data.filter(function(row) {
+        return row['state'] == state;
+    }) 
+        
         xScale.domain(d3.extent(data, function(d) { return d.date; }));
         yScale.domain([0, 5000000]);
 
@@ -156,7 +155,7 @@ function drawChart(state, color){
             .attr("x", 0 - (height / 2))
             .attr("dy", "1em")
             .style("text-anchor", "middle")
-            .text("percentage");
+            .text("total cases");
 
 
         console.log("draw data");
