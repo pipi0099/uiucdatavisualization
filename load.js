@@ -179,7 +179,7 @@ function drawChart(state, color){
             .attr("class", "dot") // Assign a class for styling
             .attr("cx", function(d) { return xScale(d.date) })
             .attr("cy", function(d) { return yScale(d.cases) })
-            .attr("r", 2)
+            .attr("r", 3)
             .call(tip)
             .on('mouseover', tip.show)
             .on('mouseout', tip.hide);
@@ -192,35 +192,6 @@ function drawChart(state, color){
             .style("fill", color)
             .text(state);
         }
-
-        var parseDate = function(d){ return d3.timeParse("%Y-%m-%d")(d)}
-        var maxCases = d3.max(data, function(d) { return +d.cases; })
-
-      const annotations = [
-       // first annotation
-        {
-      note: {
-        label: "Hot Zone with Outbreak in late 2020",
-        title: state,
-        wrap: 150,  // try something smaller to see text split in several lines
-        padding: 10   // More = text lower
-      
-     },
-     color: ["#cc0000"],
-     x: x(parseDate('2021-06-12')),
-     y: y(maxCases),
-     dy: 40,
-     dx: 40,
-    type: d3.annotationCalloutElbow,
-    }
-      ]
-      
-    const makeAnnotations = d3.annotation()
-        .annotations(annotations)
-     
-        innerChart.append("g")
-    .call(makeAnnotations)
-    }
 }
 
 // callback function

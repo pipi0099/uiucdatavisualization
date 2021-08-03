@@ -12,20 +12,16 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     </head>
-<!-- load all country names and then draw World data first -->
-<body>
-    <div class="alert alert-warning">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-        The data for the country you chose doesn't exist.
-    </div>
 
-    <!-- Menu section -->
+<body>
     <div id="step1" class="container-fluid" style="height:300px">
         <div>
             <p>
-                <h1>Cumulative Covid 19 Cases in California and Oregon</h1>
-                This chart shows the cumulative covid 19 cases in California and Oregon over time to compare the total number and acceleration trend of covid 19 cases in state that is geographically adjacent to covid "hot zone". <br/>
+                <h2>Cumulative Covid 19 Cases in California <strong style="color:red">(Hot Zone)</strong> and Oregon <strong style="color:steelblue;">(Blue)</strong></h2><br/>
+                This chart shows the total covid 19 cases in California and Oregon over time to compare the total number and acceleration trend of covid 19 cases in states that are geographically adjacent to covid "hot zone". <br/><br/>
                 From the visualization below, it illustrates that due to the difference in population and state-wide restriction measures, the total number and acceleration trend of covid 19 cases in Oregon is not directly impacted by its geographically adjacent state - California ("hot zone").<br/><br/>
+
+                <strong>Tips: You can move over your mouse on specific data points to see more details
             </p>
             <p><div id="to_step2"><a href="#">Another Example of States Comparison</a></div></p>
         </div>
@@ -34,8 +30,8 @@
     <div id="step2" class="container-fluid" style="display:none;height:300px">
         <div>
             <p>
-                <h1>Cumulative Covid 19 Cases in Texas and New Mexico</h1>
-                This chart shows the cumulative covid 19 cases in Texas and New Nexuco over time to compare the total number and acceleration trend of covid 19 cases in state that is geographically adjacent to covid "hot zone". <br/>
+                <h2>Cumulative Covid 19 Cases in Texas <strong style="color:red">(Hot Zone)</strong> and New Mexico <strong style="color:steelblue;">(Blue)</strong></h2>
+                This chart shows the cumulative covid 19 cases in Texas and New Mexico over time to compare the total number and acceleration trend of covid 19 cases in state that is geographically adjacent to covid "hot zone". <br/><br/>
                 From the visualization below, it illustrates that due to the difference in population and state-wide restriction measures, the total number and acceleration trend of covid 19 cases in New Mexico is not directly impacted by its geographically adjacent state - Texas ("hot zone").<br/><br/>
             </p>
             <p><div id="to_step3"><a href="#">Customize Your States >>></a></div></p>
@@ -45,11 +41,11 @@
     <div id="step3" class="container-fluid" style="display:none;height:300px">
         <div>
             <p>
-                <h1>Compare your own states</h1>
+                <h2>Compare your own states</h2>
                 You can pick one or more states in the list below to illustrate the total number and acceleration trend in the states of your interest.
                 <br/>
             </p>
-            <p><div id="startover"><a href="#"> Start over </a></div></p>
+            <p><div id="startover"><a href="#"> Go Back to First Page </a></div></p>
         </div>           
         <div id="country_select_container">
 
@@ -65,13 +61,12 @@
     <script src="load.js" charset="utf-8"></script>
     <script>
         draw("California", "red");
-        draw("Oregon", "blue");
+        draw("Oregon", "steelblue");
     </script>
 
 <div class="container-fluid" style="height:50px">
-    <strong style="color:orange">Orange</strong> line is for total average, <strong style="color:blue">blue</strong> is for male, and <strong style="color:red">red</strong> is for female. <br/>
+    <strong style="color:red">Red</strong> line is for hot zone state, <strong style="color:steelblue">blue</strong> is for its adjacent state. <br/>
 </div>
-
 
 </body>
 <!-- any D3 or SVG related code needs to be stay below of D3 inclusion or SVG so that it exists when javascript code try to access it. -->
