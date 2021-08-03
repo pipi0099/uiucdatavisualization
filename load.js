@@ -41,7 +41,7 @@ $("#to_step2").click(function() {
     hide('#step1');
     show('#step2');    
     draw("Texas", "red");
-    draw("New Mexico", "steelblue");
+    draw("New Mexico", "green");
 })
 
 $("#to_step3").click(function() {
@@ -59,7 +59,7 @@ $("#startover").click(function() {
     //d3.selectAll("path").remove();
     show("#step1");
     draw("California", "red");
-    draw("Oregon", "steelblue");
+    draw("Oregon", "green");
 })
 
 function load(){
@@ -192,6 +192,25 @@ function drawChart(state, color){
             .style("fill", color)
             .text(state);
         }
+
+        text = innerChart
+            .append("text")            
+            .attr("transform",
+                "translate(" + (width - 20) + " ," +
+                                (height + margin.top + 200) + ")")
+            .style("text-anchor", "middle")
+            .text("The outbreak in late 2000 and high cases in hot zone did not trigger spike in its adjacent state");
+        
+        setTM = function(element, m) {
+            return element.transform.baseVal.initialize(element.ownerSVGElement.createSVGTransformFromMatrix(m));
+          };
+
+        bbox = text[0][0].getBBox();
+        ctm = text[0][0].getCTM();
+
+        rect = svg.insert('rect', 'text').attr('x', bbox.x).attr('y', bbox.y).attr('width', bbox.width).attr('height', bbox.height);
+        setTM(rect[0][0], ctm);
+  
 }
 }
 
