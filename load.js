@@ -172,7 +172,7 @@ function drawChart(state, color){
 
         // datapoint tooltip
         data = data.filter(function(row) {
-        return row['date'] == d3.timeParse("%Y-%m-%d")("2021-06-12");
+        return row['date'] == d3.timeParse("%Y-%m-%d")("2021-01-31");
     }) 
         innerChart.append("g").selectAll(".dot")
             .attr("width", width).attr("height",height)
@@ -184,6 +184,7 @@ function drawChart(state, color){
             .attr("cy", function(d) { return yScale(d.cases) })
             .attr("r", 3)
             .call(tip)
+            .on('mouseout', tip.show)
 
         if (state == true){
             innerChart.selectAll().data(data).enter().append("g").append("text")
