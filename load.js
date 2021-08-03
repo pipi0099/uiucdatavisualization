@@ -171,9 +171,9 @@ function drawChart(state, color){
         .attr("stroke-width", 1.5);        
 
         // datapoint tooltip
-        data = data.filter(function(row) {
-        return row['date'] == d3.timeParse("%Y-%m-%d")("2021-01-31");
-    }) 
+    //     data = data.filter(function(row) {
+    //     return row['date'] == d3.timeParse("%Y-%m-%d")("2021-01-31");
+    // }) 
         innerChart.append("g").selectAll(".dot")
             .attr("width", width).attr("height",height)
             .data(data)
