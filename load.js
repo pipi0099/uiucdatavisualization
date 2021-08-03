@@ -150,6 +150,10 @@ function drawChart(state, color){
 
         console.log("draw data");
 
+        data = data.filter(function(row) {
+        return row['date'] == d3.timeParse("%Y-%m-%d")("2021-06-12");
+    }) 
+
         /* Initialize tooltip for datapoint */
         tip = d3.tip().attr('class', 'd3-tip').offset([-5, 5]).html(function(d) {
             return "<i style='color:" + color + "'>" + state + " " + d3.timeFormat("%Y %B")(d.date) + " " + d.cases  + "</i>";
@@ -181,8 +185,6 @@ function drawChart(state, color){
             .attr("cy", function(d) { return yScale(d.cases) })
             .attr("r", 3)
             .call(tip)
-            .on('mouseover', tip.show)
-            .on('mouseout', tip.hide);
 
         if (state == true){
             innerChart.selectAll().data(data).enter().append("g").append("text")
@@ -192,24 +194,6 @@ function drawChart(state, color){
             .style("fill", color)
             .text(state);
         }
-
-        text = innerChart
-            .append("text")            
-            .attr("transform",
-                "translate(" + (width - 20) + " ," +
-                                (height + margin.top + 200) + ")")
-            .style("text-anchor", "middle")
-            .text("The outbreak in late 2000 and high cases in hot zone did not trigger spike in its adjacent state");
-        
-        setTM = function(element, m) {
-            return element.transform.baseVal.initialize(element.ownerSVGElement.createSVGTransformFromMatrix(m));
-          };
-
-        bbox = text[0][0].getBBox();
-        ctm = text[0][0].getCTM();
-
-        rect = svg.insert('rect', 'text').attr('x', bbox.x).attr('y', bbox.y).attr('width', bbox.width).attr('height', bbox.height);
-        setTM(rect[0][0], ctm);
   
 }
 }
