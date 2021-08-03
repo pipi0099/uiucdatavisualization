@@ -150,10 +150,6 @@ function drawChart(state, color){
 
         console.log("draw data");
 
-        data = data.filter(function(row) {
-        return row['date'] == d3.timeParse("%Y-%m-%d")("2021-06-12");
-    }) 
-
         /* Initialize tooltip for datapoint */
         tip = d3.tip().attr('class', 'd3-tip').offset([-5, 5]).html(function(d) {
             return "<i style='color:" + color + "'>" + state + " " + d3.timeFormat("%Y %B")(d.date) + " " + d.cases  + "</i>";
@@ -175,6 +171,9 @@ function drawChart(state, color){
         .attr("stroke-width", 1.5);        
 
         // datapoint tooltip
+        data = data.filter(function(row) {
+        return row['date'] == d3.timeParse("%Y-%m-%d")("2021-06-12");
+    }) 
         innerChart.append("g").selectAll(".dot")
             .attr("width", width).attr("height",height)
             .data(data)
