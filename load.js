@@ -193,6 +193,7 @@ function drawChart(state, color){
             .text(state);
         }
 }
+}
 
 // callback function
 function StatesList(data, i){
