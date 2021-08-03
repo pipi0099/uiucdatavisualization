@@ -17,7 +17,7 @@
     <div id="step1" class="container-fluid" style="height:300px">
         <div>
             <p>
-                <h2>Cumulative Covid 19 Cases in California <strong style="color:red">(Hot Zone)</strong> and Oregon <strong style="color:steelblue;">(Blue)</strong></h2><br/>
+                <h2>Cumulative Covid 19 Cases in <strong style="color:red">California (Hot Zone)</strong> and <strong style="color:green;">Oregon (Green)</strong></h2><br/>
                 This chart shows the total covid 19 cases in California and Oregon over time to compare the total number and acceleration trend of covid 19 cases in states that are geographically adjacent to covid "hot zone". <br/><br/>
                 From the visualization below, it illustrates that due to the difference in population and state-wide restriction measures, the total number and acceleration trend of covid 19 cases in Oregon is not directly impacted by its geographically adjacent state - California ("hot zone").<br/><br/>
 
@@ -30,7 +30,7 @@
     <div id="step2" class="container-fluid" style="display:none;height:300px">
         <div>
             <p>
-                <h2>Cumulative Covid 19 Cases in Texas <strong style="color:red">(Hot Zone)</strong> and New Mexico <strong style="color:steelblue;">(Blue)</strong></h2>
+                <h2>Cumulative Covid 19 Cases in <strong style="color:red">Texas (Hot Zone)</strong> and <strong style="color:green;">New Mexico (Green)</strong></h2>
                 This chart shows the cumulative covid 19 cases in Texas and New Mexico over time to compare the total number and acceleration trend of covid 19 cases in state that is geographically adjacent to covid "hot zone". <br/><br/>
                 From the visualization below, it illustrates that due to the difference in population and state-wide restriction measures, the total number and acceleration trend of covid 19 cases in New Mexico is not directly impacted by its geographically adjacent state - Texas ("hot zone").<br/><br/>
 
@@ -46,12 +46,14 @@
                 <h2>Compare your own states</h2>
                 You can pick one or more states in the list below to illustrate the total number and acceleration trend in the states of your interest.
                 <br/>
+                <strong>Tips: A new line will be added to the chart each time you select a state from the dropdown list</strong>
             </p>
             <p><div id="startover"><a href="#"> Go Back to First Page </a></div></p>
         </div>           
         <div id="country_select_container">
 
         </div>
+
     </div>
     
     <div class="content">
@@ -63,12 +65,8 @@
     <script src="load.js" charset="utf-8"></script>
     <script>
         draw("California", "red");
-        draw("Oregon", "steelblue");
+        draw("Oregon", "green");
     </script>
-
-<div class="container-fluid" style="height:50px">
-    <strong style="color:red">Red</strong> line is for hot zone state, <strong style="color:steelblue">blue</strong> is for its adjacent state. <br/>
-</div>
 
 </body>
 <!-- any D3 or SVG related code needs to be stay below of D3 inclusion or SVG so that it exists when javascript code try to access it. -->
